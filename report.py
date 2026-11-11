@@ -24,3 +24,13 @@ def show(people, mistakes, all_lines):
 
 if __name__ == "__main__":
     print("report.py показывает обработанные анкеты")
+    # Подсчёт анкет по доменам почты
+    domains = {}
+
+    for person in people:
+        domain = person["email"].split("@")[1]
+        domains[domain] = domains.get(domain, 0) + 1
+
+    print("\nПо доменам электронной почты:")
+    for domain, count in sorted(domains.items()):
+        print(f"  {domain}: {count}")
